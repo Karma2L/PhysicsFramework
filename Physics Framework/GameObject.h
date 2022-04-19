@@ -7,6 +7,7 @@
 #include "Transform.h"
 #include "Appearance.h"
 #include "ParticleModel.h"
+#include "Application.h"
 
 
 using namespace DirectX;
@@ -36,6 +37,7 @@ private:
 	Appearance* _appearance;
 	ParticleModel* _particleModel;
 	Debug debug;
+
 
 	
 	

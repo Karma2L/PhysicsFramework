@@ -42,7 +42,10 @@ public:
 	void SetThrustForce(Vector3D thrust) { _thrust = thrust; }
 	void SetThrustForce(float x, float y, float z) { _thrust.x = x; _thrust.y = y; _thrust.z = z;}
 
-	//
+	Vector3D CalculateDrag();
+
+	//-----------------------Reset------------------------------------
+	void Reset();
 
 
 	//------------------------------Gravity---------------------------------------------
@@ -81,6 +84,7 @@ private:
 	Vector3D _positionOnPlane;
 	Vector3D _weight;
 	Vector3D _upForce;
+	Vector3D _drag;
 
 	//F= ma    e.g. mass = 10.0g acceleration = 0,-9.81,0 ma = 10*0,10*-9.81,10*0
 

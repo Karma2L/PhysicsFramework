@@ -1,5 +1,5 @@
 #include "ParticleModel.h"
-
+#include <Windows.h>
 ParticleModel::ParticleModel(Transform* transform, Vector3D velocity, Vector3D acceleration, bool useConstAcceleration, bool useVelocity, float mass, bool useGravity)
 {
 	_transform = transform;
@@ -52,6 +52,7 @@ void ParticleModel::Update(float t)
 	//	moveConstVelocity(t);
 	//}
 
+	Reset();
 }
 
 
@@ -94,7 +95,7 @@ void ParticleModel::UpdateNetForce()
 	calculatedrag
 	calculate friction*/
 
-	Vector3D forces[] = { _thrust, _friction };
+	Vector3D forces[] = { _thrust, _friction, _drag };
 	
 
 	for(Vector3D& force : forces)
@@ -118,6 +119,26 @@ void ParticleModel::UpdateAccel()
 	{
 		_acceleration.y += _weight.y;
 	}
+	auto s = std::to_string(_acceleration.y) + "\n";
+	std::wstring  ws(s.begin(), s.end());
+	OutputDebugString(ws.c_str());
+}
+
+
+Vector3D ParticleModel::CalculateDrag()
+{
+	_drag = Vector3D();
+	_drag.x = DRAG_COEFFICIENT * REFERENCE_AREA * DENSITY_OF_AIR * _velocity.x * _velocity.x * 0.5;
+	_drag.y = DRAG_COEFFICIENT * REFERENCE_AREA * DENSITY_OF_AIR * _velocity.y * _velocity.y * 0.5;
+	_drag.z = DRAG_COEFFICIENT * REFERENCE_AREA * DENSITY_OF_AIR * _velocity.z * _velocity.z * 0.5;
+
+	return _drag;
+}
+
+void ParticleModel::Reset()
+{
+	_acceleration = Vector3D(0.0f, 0.0f, 0.0f);
+	_force = Vector3D(0.0f, 0.0f, 0.0f);
 }
 
 void ParticleModel::ActivateGravity(bool gravity)

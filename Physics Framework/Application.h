@@ -106,9 +106,9 @@ private:
 
 	MeshData objMeshData;
 
+	vector<GameObject *> _gameObjects;
 	Light basicLight;
 
-	vector<GameObject *> _gameObjects;
 
 	Camera * _camera = nullptr;
 

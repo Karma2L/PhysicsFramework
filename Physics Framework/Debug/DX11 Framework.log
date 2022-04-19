@@ -1,0 +1,16 @@
+﻿  Application.cpp
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\Application.cpp(724,21): warning C4244: 'initializing': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\Application.cpp(818,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  GameObject.cpp
+  Main.cpp
+  ParticleModel.cpp
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\ParticleModel.cpp(3,126): warning C4100: 'useVelocity': unreferenced formal parameter
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\ParticleModel.cpp(131,91): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\ParticleModel.cpp(132,91): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\ParticleModel.cpp(133,91): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\ParticleModel.cpp(156,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\ParticleModel.cpp(157,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\ParticleModel.cpp(158,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Transform.cpp
+  Generating Code...
+  DX11 Framework.vcxproj -> C:\Users\a018374j\Documents\GitHub\PhysicsFramework\Physics Framework\Debug\DX11 Framework.exe

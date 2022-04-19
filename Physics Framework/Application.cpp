@@ -172,10 +172,10 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	{
 		Transform* cubeTransform = new Transform();
 		Vector3D cubePosition = cubeTransform->GetPosition();
-		cubeTransform->SetPosition(-4.0f + (i * 2.0f), 0.5f, 10.0f);
+		cubeTransform->SetPosition(-4.0f + (i * 2.0f), 5.5f, 10.0f);
 		cubeTransform->SetScale(0.5f, 0.5f, 0.5f);
 		cubeTransform->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
-		ParticleModel* cubeParticleModel = new ParticleModel(cubeTransform, Vector3D(0.0f, 0.0f, 0.0f), Vector3D(0.0f, 0.0f, 0.0f), true, true, 4.0f, true);
+		ParticleModel* cubeParticleModel = new ParticleModel(cubeTransform, Vector3D(0.0f, 0.0f, 0.0f), Vector3D(0.0f, 0.0f, 0.0f), true, true, 4.0f, false);
 
 
 
@@ -189,7 +189,7 @@ HRESULT Application::Initialise(HINSTANCE hInstance, int nCmdShow)
 	donutTransform->SetScale(0.5f, 0.5f, 0.5f);
 	donutTransform->SetPosition(-6.0f, 0.5f, 10.0f);
 	donutTransform->SetRotation(XMConvertToRadians(90.0f), 0.0f, 0.0f);
-	ParticleModel* donutParticleModel = new ParticleModel(donutTransform, Vector3D(0.0f, 0.0f, 0.0f), Vector3D(0.0f, 0.0f, 0.0f), true, true, 3.0f, true);
+	ParticleModel* donutParticleModel = new ParticleModel(donutTransform, Vector3D(0.0f, 0.0f, 0.0f), Vector3D(0.0f, 0.0f, 0.0f), true, true, 3.0f, false);
 	donutAppearance->SetTextureRV(_pTextureRV);
 	gameObject = new GameObject("Donut", donutAppearance, donutTransform, donutParticleModel);
 	_gameObjects.push_back(gameObject);
@@ -684,9 +684,9 @@ void Application::Cleanup()
 
 void Application::moveForward(int objectNumber)
 {
-	Vector3D position = _gameObjects[objectNumber]->GetTransform()->GetPosition();
+	Vector3D position = _gameObjects[6]->GetTransform()->GetPosition();
 	position.z -= 0.02f;
-	_gameObjects[objectNumber]->GetTransform()->SetPosition(position);
+	_gameObjects[6]->GetTransform()->SetPosition(position);
 
 	//_gameObjects[objectNumber]->GetParticleModel()->SetPositionOnPlane(position);
 
@@ -770,10 +770,25 @@ void Application::Update()
 	{
 		for (auto& go : _gameObjects)
 		{
-			go->GetParticleModel()->ActivateGravity(true);
+			auto p = go->GetParticleModel();
+			if (p)
+			{
+				p->ActivateGravity(true);
+			}
 		}
 	}
 
+	if (GetKeyState('J'))
+	{
+		for (auto& go : _gameObjects)
+		{
+			auto p = go->GetParticleModel();
+			if (p)
+			{
+				p->ActivateGravity(false);
+			}
+		}
+	}
 
 	// Update camera
 	float angleAroundZ = XMConvertToRadians(_cameraOrbitAngleXZ);

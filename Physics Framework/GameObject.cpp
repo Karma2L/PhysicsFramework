@@ -29,8 +29,9 @@ void GameObject::Update(float t)
 	if (_particleModel)
 	{
 		_particleModel->Update(t);
-		_transform = _particleModel->GetTransform();
+		//_transform = _particleModel->GetTransform();
 		_particleModel->PreventsFromFalling();
+		//_particleModel->ActivateGravity(true);
 
 
 	}
